@@ -4,27 +4,258 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Change Management: Interno vs Consultoria</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="https://img.icons8.com/plasticine/100/000000/sync.png"> </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e6ed;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .criterion {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .criterion h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .radio-option:hover {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+        
+        .radio-option input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .radio-option.selected {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+        
+        .analyze-btn {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+            display: block;
+            margin: 0 auto;
+            font-weight: 600;
+        }
+        
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(46, 204, 113, 0.4);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            color: white;
+            display: none;
+        }
+        
+        .results h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .recommendation {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .score-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .score-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .score-value {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .considerations {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .considerations h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .considerations ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .considerations li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .considerations li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .score-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
 <body>
     <div class="container">
-        <header class="header"> <h1>🔄 Change Management Decision Tool</h1>
+        <div class="header">
+            <h1>🔄 Change Management Decision Tool</h1>
             <p>Descubra se é melhor ter equipe interna ou contratar consultoria</p>
-        </header>
+        </div>
         
-        <main class="content"> <section class="section"> <h2>📊 Avalie os Critérios Abaixo</h2>
-                <form id="decisionForm" class="criteria-grid"> <div class="criterion">
+        <div class="content">
+            <div class="section">
+                <h2>📊 Avalie os Critérios Abaixo</h2>
+                <div class="criteria-grid">
+                    
+                    <div class="criterion">
                         <h3>💰 Orçamento Disponível</h3>
                         <div class="radio-group">
                             <label class="radio-option">
-                                <input type="radio" name="budget" value="3" required> <span>Alto orçamento (>R$ 500k/ano)</span>
+                                <input type="radio" name="budget" value="3">
+                                <span>Alto orçamento (>R$ 500k/ano)</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="budget" value="2" required>
+                                <input type="radio" name="budget" value="2">
                                 <span>Orçamento médio (R$ 200-500k/ano)</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="budget" value="1" required>
+                                <input type="radio" name="budget" value="1">
                                 <span>Orçamento limitado (<R$ 200k/ano)</span>
                             </label>
                         </div>
@@ -34,15 +265,15 @@
                         <h3>⏰ Frequência de Mudanças</h3>
                         <div class="radio-group">
                             <label class="radio-option">
-                                <input type="radio" name="frequency" value="3" required>
+                                <input type="radio" name="frequency" value="3">
                                 <span>Mudanças constantes (mensais)</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="frequency" value="2" required>
+                                <input type="radio" name="frequency" value="2">
                                 <span>Mudanças regulares (trimestrais)</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="frequency" value="1" required>
+                                <input type="radio" name="frequency" value="1">
                                 <span>Mudanças ocasionais (anuais)</span>
                             </label>
                         </div>
@@ -52,15 +283,15 @@
                         <h3>🏢 Tamanho da Empresa</h3>
                         <div class="radio-group">
                             <label class="radio-option">
-                                <input type="radio" name="size" value="3" required>
+                                <input type="radio" name="size" value="3">
                                 <span>Grande (>1000 funcionários)</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="size" value="2" required>
+                                <input type="radio" name="size" value="2">
                                 <span>Média (100-1000 funcionários)</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="size" value="1" required>
+                                <input type="radio" name="size" value="1">
                                 <span>Pequena (<100 funcionários)</span>
                             </label>
                         </div>
@@ -70,15 +301,15 @@
                         <h3>🎯 Complexidade das Mudanças</h3>
                         <div class="radio-group">
                             <label class="radio-option">
-                                <input type="radio" name="complexity" value="1" required>
+                                <input type="radio" name="complexity" value="1">
                                 <span>Altamente complexas (transformação cultural)</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="complexity" value="2" required>
+                                <input type="radio" name="complexity" value="2">
                                 <span>Moderadamente complexas (processos)</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="complexity" value="3" required>
+                                <input type="radio" name="complexity" value="3">
                                 <span>Simples (ferramentas/sistemas)</span>
                             </label>
                         </div>
@@ -88,15 +319,15 @@
                         <h3>👥 Experiência Interna</h3>
                         <div class="radio-group">
                             <label class="radio-option">
-                                <input type="radio" name="experience" value="3" required>
+                                <input type="radio" name="experience" value="3">
                                 <span>Equipe experiente em change</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="experience" value="2" required>
+                                <input type="radio" name="experience" value="2">
                                 <span>Alguma experiência</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="experience" value="1" required>
+                                <input type="radio" name="experience" value="1">
                                 <span>Pouca ou nenhuma experiência</span>
                             </label>
                         </div>
@@ -106,15 +337,15 @@
                         <h3>⚡ Urgência dos Projetos</h3>
                         <div class="radio-group">
                             <label class="radio-option">
-                                <input type="radio" name="urgency" value="1" required>
+                                <input type="radio" name="urgency" value="1">
                                 <span>Extremamente urgente (<3 meses)</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="urgency" value="2" required>
+                                <input type="radio" name="urgency" value="2">
                                 <span>Moderadamente urgente (3-6 meses)</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="urgency" value="3" required>
+                                <input type="radio" name="urgency" value="3">
                                 <span>Sem pressa (>6 meses)</span>
                             </label>
                         </div>
@@ -124,5 +355,208 @@
                         <h3>🔍 Conhecimento do Negócio</h3>
                         <div class="radio-group">
                             <label class="radio-option">
-                                <input type="radio" name="business_knowledge" value="3" required>
-                                <span>
+                                <input type="radio" name="business_knowledge" value="3">
+                                <span>Conhecimento profundo é crucial</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="business_knowledge" value="2">
+                                <span>Conhecimento moderado é suficiente</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="business_knowledge" value="1">
+                                <span>Conhecimento geral é adequado</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="criterion">
+                        <h3>🔄 Continuidade dos Projetos</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="3">
+                                <span>Projetos de longo prazo (>2 anos)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="2">
+                                <span>Projetos médio prazo (6-24 meses)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="1">
+                                <span>Projetos pontuais (<6 meses)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <button class="analyze-btn" onclick="analyzeDecision()">
+                    🔍 Analisar Recomendação
+                </button>
+            </div>
+            
+            <div class="results" id="results">
+                <h2>📈 Resultado da Análise</h2>
+                <div class="recommendation" id="recommendation"></div>
+                <div class="score-breakdown">
+                    <div class="score-card">
+                        <div class="score-value" id="internal-score">0</div>
+                        <div>Equipe Interna</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-value" id="external-score">0</div>
+                        <div>Consultoria Externa</div>
+                    </div>
+                </div>
+                <div class="considerations" id="considerations"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Adicionar efeito visual para seleção
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Remove selected class from all options in this group
+                document.querySelectorAll(`input[name="${this.name}"]`).forEach(r => {
+                    r.parentElement.classList.remove('selected');
+                });
+                // Add selected class to current option
+                this.parentElement.classList.add('selected');
+            });
+        });
+        
+        function analyzeDecision() {
+            const criteria = ['budget', 'frequency', 'size', 'complexity', 'experience', 'urgency', 'business_knowledge', 'continuity'];
+            let internalScore = 0;
+            let externalScore = 0;
+            let answeredCriteria = 0;
+            
+            const weights = {
+                budget: 1.2,
+                frequency: 1.5,
+                size: 1.0,
+                complexity: 1.3,
+                experience: 1.4,
+                urgency: 1.1,
+                business_knowledge: 1.2,
+                continuity: 1.3
+            };
+            
+            criteria.forEach(criterion => {
+                const selected = document.querySelector(`input[name="${criterion}"]:checked`);
+                if (selected) {
+                    answeredCriteria++;
+                    const value = parseInt(selected.value);
+                    const weight = weights[criterion];
+                    
+                    // Lógica para pontuar interno vs externo
+                    if (criterion === 'budget') {
+                        internalScore += value * weight; // Mais orçamento favorece interno
+                        externalScore += (4 - value) * weight;
+                    } else if (criterion === 'frequency') {
+                        internalScore += value * weight; // Mais frequência favorece interno
+                        externalScore += (4 - value) * weight;
+                    } else if (criterion === 'size') {
+                        internalScore += value * weight; // Empresa maior favorece interno
+                        externalScore += (4 - value) * weight;
+                    } else if (criterion === 'complexity') {
+                        externalScore += (4 - value) * weight; // Mais complexidade favorece externo
+                        internalScore += value * weight;
+                    } else if (criterion === 'experience') {
+                        internalScore += value * weight; // Mais experiência favorece interno
+                        externalScore += (4 - value) * weight;
+                    } else if (criterion === 'urgency') {
+                        externalScore += (4 - value) * weight; // Mais urgência favorece externo
+                        internalScore += value * weight;
+                    } else if (criterion === 'business_knowledge') {
+                        internalScore += value * weight; // Conhecimento específico favorece interno
+                        externalScore += (4 - value) * weight;
+                    } else if (criterion === 'continuity') {
+                        internalScore += value * weight; // Projetos longos favorecem interno
+                        externalScore += (4 - value) * weight;
+                    }
+                }
+            });
+            
+            if (answeredCriteria < criteria.length) {
+                alert('Por favor, responda todos os critérios antes de analisar.');
+                return;
+            }
+            
+            // Normalizar pontuações
+            const totalPossible = criteria.length * 3;
+            internalScore = Math.round((internalScore / (totalPossible * 1.3)) * 100);
+            externalScore = Math.round((externalScore / (totalPossible * 1.3)) * 100);
+            
+            displayResults(internalScore, externalScore);
+        }
+        
+        function displayResults(internalScore, externalScore) {
+            const resultsDiv = document.getElementById('results');
+            const recommendationDiv = document.getElementById('recommendation');
+            const considerationsDiv = document.getElementById('considerations');
+            
+            document.getElementById('internal-score').textContent = internalScore + '%';
+            document.getElementById('external-score').textContent = externalScore + '%';
+            
+            let recommendation = '';
+            let considerations = '';
+            
+            if (internalScore > externalScore + 10) {
+                recommendation = `
+                    <h3>🏠 Recomendação: EQUIPE INTERNA</h3>
+                    <p>Com base na sua análise, uma equipe interna de change management seria mais adequada para sua situação atual. 
+                    Sua empresa possui as condições necessárias para desenvolver e manter capacidades internas.</p>
+                `;
+                considerations = `
+                    <h3>💡 Considerações Importantes:</h3>
+                    <ul>
+                        <li>Invista em treinamento e certificação da equipe</li>
+                        <li>Estabeleça metodologias e processos padronizados</li>
+                        <li>Considere mentoria externa inicial para acelerar o desenvolvimento</li>
+                        <li>Mantenha a equipe atualizada com tendências do mercado</li>
+                        <li>Desenvolva métricas para medir eficácia das mudanças</li>
+                    </ul>
+                `;
+            } else if (externalScore > internalScore + 10) {
+                recommendation = `
+                    <h3>🌐 Recomendação: CONSULTORIA EXTERNA</h3>
+                    <p>Para sua situação atual, contratar consultoria externa seria mais eficiente. 
+                    Isso permitirá acesso imediato a expertise especializada e resultados mais rápidos.</p>
+                `;
+                considerations = `
+                    <h3>💡 Considerações Importantes:</h3>
+                    <ul>
+                        <li>Escolha consultoria com experiência no seu setor</li>
+                        <li>Defina claramente escopo e expectativas</li>
+                        <li>Garanta transferência de conhecimento para equipe interna</li>
+                        <li>Monitore resultados e ROI constantemente</li>
+                        <li>Mantenha envolvimento da liderança interna</li>
+                    </ul>
+                `;
+            } else {
+                recommendation = `
+                    <h3>⚖️ Recomendação: ABORDAGEM HÍBRIDA</h3>
+                    <p>Os resultados indicam que uma combinação de equipe interna com apoio de consultoria externa 
+                    seria ideal. Isso oferece o melhor dos dois mundos.</p>
+                `;
+                considerations = `
+                    <h3>💡 Considerações Importantes:</h3>
+                    <ul>
+                        <li>Desenvolva núcleo interno básico de change management</li>
+                        <li>Use consultoria para projetos complexos ou urgentes</li>
+                        <li>Estabeleça parceria de longo prazo com consultoria confiável</li>
+                        <li>Invista em capacitação contínua da equipe interna</li>
+                        <li>Crie processo para decidir quando usar cada abordagem</li>
+                    </ul>
+                `;
+            }
+            
+            recommendationDiv.innerHTML = recommendation;
+            considerationsDiv.innerHTML = considerations;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
