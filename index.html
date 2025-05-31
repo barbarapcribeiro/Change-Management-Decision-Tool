@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Management: Interno vs Consultoria</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/plasticine/100/000000/sync.png"> </head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🔄 Change Management Decision Tool</h1>
+            <p>Descubra se é melhor ter equipe interna ou contratar consultoria</p>
+        </header>
+        
+        <main class="content">
+            <section class="section">
+                <h2>📊 Avalie os Critérios Abaixo</h2>
+                <form id="decisionForm" class="criteria-grid">
+                    
+                    <div class="criterion">
+                        <h3>💰 Orçamento Disponível</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="budget" value="3" required>
+                                <span>Alto orçamento (>R$ 500k/ano)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="budget" value="2" required>
+                                <span>Orçamento médio (R$ 200-500k/ano)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="budget" value="1" required>
+                                <span>Orçamento limitado (<R$ 200k/ano)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="criterion">
+                        <h3>⏰ Frequência de Mudanças</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="frequency" value="3" required>
+                                <span>Mudanças constantes (mensais)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="frequency" value="2" required>
+                                <span>Mudanças regulares (trimestrais)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="frequency" value="1" required>
+                                <span>Mudanças ocasionais (anuais)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="criterion">
+                        <h3>🏢 Tamanho da Empresa</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="size" value="3" required>
+                                <span>Grande (>1000 funcionários)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="size" value="2" required>
+                                <span>Média (100-1000 funcionários)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="size" value="1" required>
+                                <span>Pequena (<100 funcionários)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="criterion">
+                        <h3>🎯 Complexidade das Mudanças</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="complexity" value="1" required>
+                                <span>Altamente complexas (transformação cultural)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="complexity" value="2" required>
+                                <span>Moderadamente complexas (processos)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="complexity" value="3" required>
+                                <span>Simples (ferramentas/sistemas)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="criterion">
+                        <h3>👥 Experiência Interna</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="experience" value="3" required>
+                                <span>Equipe experiente em change</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="experience" value="2" required>
+                                <span>Alguma experiência</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="experience" value="1" required>
+                                <span>Pouca ou nenhuma experiência</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="criterion">
+                        <h3>⚡ Urgência dos Projetos</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="urgency" value="1" required>
+                                <span>Extremamente urgente (<3 meses)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="urgency" value="2" required>
+                                <span>Moderadamente urgente (3-6 meses)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="urgency" value="3" required>
+                                <span>Sem pressa (>6 meses)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="criterion">
+                        <h3>🔍 Conhecimento do Negócio</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="business_knowledge" value="3" required>
+                                <span>Conhecimento profundo é crucial</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="business_knowledge" value="2" required>
+                                <span>Conhecimento moderado é suficiente</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="business_knowledge" value="1" required>
+                                <span>Conhecimento geral é adequado</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="criterion">
+                        <h3>🔄 Continuidade dos Projetos</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="3" required>
+                                <span>Projetos de longo prazo (>2 anos)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="2" required>
+                                <span>Projetos médio prazo (6-24 meses)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="1" required>
+                                <span>Projetos pontuais (<6 meses)</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+                
+                <button type="submit" form="decisionForm" class="analyze-btn">
+                    🔍 Analisar Recomendação
+                </button>
+            </section>
+            
+            <section class="results" id="results">
+                <h2>📈 Resultado da Análise</h2>
+                <div class="recommendation" id="recommendation"></div>
+                <div class="score-breakdown">
+                    <div class="score-card">
+                        <div class="score-value" id="internal-score">0%</div>
+                        <div>Equipe Interna</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-value" id="external-score">0%</div>
+                        <div>Consultoria Externa</div>
+                    </div>
+                </div>
+                <div class="considerations" id="considerations"></div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
